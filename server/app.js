@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import connectDB from "./database/database.js";
 import dotenv from "dotenv";
 import session from "express-session";
@@ -7,35 +8,19 @@ import cookieParser from "cookie-parser";
 import apiRoutes from "./routes/index.js";
 import passport from "passport";
 
-
 dotenv.config();
 
-const PORT = process.env.PORT||5500;
-const app = express()
+const PORT = process.env.PORT || 5500;
+const __dirname = path.resolve();
 
+const app = express();
 
-
-
-app.use(express.json())
+app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    allowedHeaders: "Content-Type,Authorization",
-  })
-);
-
+app.use(cors());
 
 connectDB();
 
-// app.use(express.static(path.join(__dirname, "../client/build")));
-
- // Anything that doesn't match the above, send back index.html
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
-// });
 
 
 app.use(
@@ -49,7 +34,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use("/api", apiRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port `+PORT);
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+//  Anything that doesn't match the above, send back index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
+app.listen(PORT, () => {
+  console.log(`Server is running on port ` + PORT);
+});
