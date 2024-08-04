@@ -34,11 +34,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use("/api", apiRoutes);
 
-app.use(express.static(path.join(__dirname, "../client/dist")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 //  Anything that doesn't match the above, send back index.html
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 app.listen(PORT, () => {
