@@ -21,8 +21,6 @@ app.use(cors());
 
 connectDB();
 
-
-
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -35,7 +33,6 @@ app.use(passport.session());
 app.use("/api", apiRoutes);
 
 app.use(express.static(path.join(__dirname, "../public")));
-
 
 //  Anything that doesn't match the above, send back index.html
 app.get("*", (req, res) => {
