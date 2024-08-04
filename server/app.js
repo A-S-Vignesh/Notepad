@@ -35,9 +35,7 @@ app.use(passport.session());
 app.use("/api", apiRoutes);
 
 app.use(express.static(path.join(__dirname, "../public")));
-app.get("/",(req, res) => {
-    res.sendFile("Working : "+ __dirname)
-})
+
 
 //  Anything that doesn't match the above, send back index.html
 app.get("*", (req, res) => {
