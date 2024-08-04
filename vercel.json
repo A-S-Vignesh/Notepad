@@ -3,10 +3,7 @@
   "builds": [
     {
       "src": "server/app.js",
-      "use": "@vercel/node",
-      "config": {
-        "maxDuration": 30
-      }
+      "use": "@vercel/node"
     },
     {
       "src": "client/package.json",
@@ -18,8 +15,12 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "dest": "/server/app.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "public"
     }
   ]
 }
