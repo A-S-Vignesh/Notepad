@@ -40,7 +40,6 @@ app.use(express.static(path.join(__dirname, "../public")));
 //  Anything that doesn't match the above, send back index.html
 app.get("*", (req, res) => {
   console.log("* route working", __dirname)
-  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 app.listen(PORT, () => {
