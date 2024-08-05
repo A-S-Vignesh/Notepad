@@ -18,8 +18,8 @@ router.get(
   googleCallback
 );
 
-router.get("/me", (req, res) => {
-    res.json({ user: req.user });
+router.get("/me", async (req, res) => {
+    await res.json({ user: req.user });
 });
 
 router.post("/logout", signout);
