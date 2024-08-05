@@ -32,13 +32,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use("/api", apiRoutes);
 
-app.use(express.static(path.join(__dirname, "../public")));
-
-//  Anything that doesn't match the above, send back index.html
-app.get("*", (req, res) => {
-  console.log("* route working", __dirname)
-  
-});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ` + PORT);
