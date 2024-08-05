@@ -19,11 +19,7 @@ router.get(
 );
 
 router.get("/me", (req, res) => {
-  if (req.isAuthenticated()) {
     res.json({ user: req.user });
-  } else {
-    res.status(401).json({ message: "Not authenticated" });
-  }
 });
 
 router.post("/logout", signout);
