@@ -35,6 +35,7 @@ app.use("/api", apiRoutes);
 
 
 app.get("*", (req, res) => {
+  console.log("its running");
   res.sendFile(path.join(__dirname,"client","dist","index.html"));
 });
 
