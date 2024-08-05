@@ -12,12 +12,8 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/server/app.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/client/$1"
+      "dest": "/server/app.js"
     }
   ]
 }
