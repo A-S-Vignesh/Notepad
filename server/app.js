@@ -34,7 +34,7 @@ app.use("/api", apiRoutes);
 
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname,"/client/$1"));
+  res.sendFile(path.join(__dirname,"/client/index.html"));
 });
 
 app.listen(PORT, () => {
