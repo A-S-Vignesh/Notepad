@@ -12,7 +12,7 @@ export const signout = (req, res) => {
   // Clear the JWT cookie
   res.clearCookie("jwt", {
     httpOnly: true,
-    sameSite: "Strict",
+    sameSite: "None",
     secure: process.env.NODE_ENV === "production",  //true in production
   });
 
