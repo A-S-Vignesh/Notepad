@@ -24,10 +24,10 @@ function AddNotes({ setNotesData }) {
     <div>
       <div>
         <div className="flex flex-col sm:flex-row items-center justify-center flex-wrap gap-6 sm:gap-x-10 lg:gap-x-16">
-          <div className="flex w-full sm:w-[390px] rounded-md max-h-max gap-2 mb-6 flex-col bg-white shadow-md p-4 border-2 dark:bg-gray-800 dark:text-white dark:border-gray-800">
+          <div className="flex w-[93%] sm:w-[390px] rounded-md max-h-max gap-2 mb-6 flex-col bg-white shadow-md p-4 border-2 dark:bg-gray-800 dark:text-white dark:border-gray-800">
             <input
               type="text"
-              className="p-2 dark:bg-gray-800 dark:text-white"
+              className="p-2 text-lg dark:bg-gray-800 dark:text-white"
               placeholder="Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}

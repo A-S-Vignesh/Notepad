@@ -21,10 +21,10 @@ function DisplayNotesBox({ id, title, content }) {
   }, [displayContent]);
 
   return (
-    <div className="flex flex-col w-full sm:w-[390px] bg-white shadow-md p-4 border-2 dark:bg-gray-800 dark:text-white dark:border-gray-800 mb-4">
+    <div className="flex flex-col w-[93%] sm:w-[390px] rounded-md bg-white shadow-md p-4 border-2 dark:bg-gray-800 dark:text-white dark:border-gray-800">
       <input
         type="text"
-        className="text-3xl p-2 dark:bg-gray-800 dark:text-white focus:outline-none"
+        className="text-2xl md:text-3xl p-2 dark:bg-gray-800 dark:text-white focus:outline-none font-bold"
         value={displayTitle}
         onChange={(event) => setDisplayTitle(event.target.value)}
         readOnly={!isEditing}
