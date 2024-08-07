@@ -32,7 +32,7 @@ function DisplayNotes() {
           );
         })
       ) : (
-        <p>No notes available.</p>
+        <p className="dark:text-white">No notes available.</p>
       )}
     </div>
   );
