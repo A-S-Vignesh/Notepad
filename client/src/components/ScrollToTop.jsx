@@ -27,7 +27,7 @@ const ScrollToTopButton = () => {
     <button
       type="button"
       onClick={scrollToTop}
-      className={`fixed bottom-4 right-4 p-3 rounded-full shadow-lg bg-blue-500 text-white transition-opacity duration-300 ${
+      className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg bg-blue-500 text-white transition-opacity duration-300 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
@@ -36,7 +36,7 @@ const ScrollToTopButton = () => {
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        className="w-6 h-6"
+        className="w-8 h-8"
       >
         <path
           strokeLinecap="round"
