@@ -2,6 +2,7 @@
 import express from "express";
 import passport from "../config/passport.js";
 import { googleCallback, signout } from "../controllers/authController.js";
+import protectRoute from "../middleware/protectRoute.js";
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ router.get(
   googleCallback
 );
 
-router.get("/me", async (req, res) => {
+router.get("/me",protectRoute, async (req, res) => {
     await res.json({ user: req.user });
 });
 

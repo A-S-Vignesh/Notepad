@@ -8,24 +8,31 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const { notes, setNotes } = useStore();
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/auth/me`,
-          {
-            withCredentials: true,
-          }
-        );
-        setUser(response.data.user);
-      } catch (error) {
+useEffect(() => {
+  const fetchUserData = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/auth/me`,
+        {
+          withCredentials: true,
+        }
+      );
+      setUser(response.data.user);
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        console.warn("User is not authenticated.");
+        setUser(null); // Set user to null for better UI handling
+        // Optionally, redirect to login or show a notification
+      } else {
         console.error("Error fetching user data:", error);
-        setUser(null); // Set user to null on error for better UI handling
+        setUser(null); // Handle other types of errors
       }
-    };
+    }
+  };
 
-    fetchUserData();
-  }, []);
+  fetchUserData();
+}, []);
+
 
   const signIn = () => {
     // Redirect to the correct URL

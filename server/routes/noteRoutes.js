@@ -8,7 +8,7 @@ const routes = express.Router();
 routes.get("/",protectRoute,displayNotes);
 routes.post("/",protectRoute, addNotes);
 routes.delete("/", protectRoute, deleteNotes);
-routes.put("/", updateNotes);
+routes.put("/",protectRoute, updateNotes);
 
 
 export default routes;
