@@ -9,7 +9,7 @@ function DisplayNotes() {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-x-10 lg:gap-x-16">
+    <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-x-10 lg:gap-x-16 mb-6">
       {user ? (
         notes?.map((data) => {
           let decryptedTitle = "";
