@@ -9,12 +9,22 @@ const AuthProvider = ({ children }) => {
   const { notes, setNotes } = useStore();
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/auth/me`, {
-        withCredentials: true,
-      })
-      .then((response) => setUser(response.data.user))
-      .catch(() => setUser(null));
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/auth/me`,
+          {
+            withCredentials: true,
+          }
+        );
+        setUser(response.data.user);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setUser(null); // Set user to null on error for better UI handling
+      }
+    };
+
+    fetchUserData();
   }, []);
 
   const signIn = () => {
