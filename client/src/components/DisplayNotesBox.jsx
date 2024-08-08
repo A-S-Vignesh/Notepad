@@ -24,14 +24,14 @@ function DisplayNotesBox({ id, title, content }) {
     <div className="flex flex-col w-[93%] sm:w-[390px] rounded-md bg-white shadow-md p-4 border-2 dark:bg-gray-800 dark:text-white dark:border-gray-800">
       <input
         type="text"
-        className="text-2xl md:text-3xl p-2 dark:bg-gray-800 dark:text-white focus:outline-none font-bold"
+        className="text-2xl md:text-3xl p-2 bg-white dark:bg-gray-800 dark:text-white focus:outline-none font-bold"
         value={displayTitle}
         onChange={(event) => setDisplayTitle(event.target.value)}
         readOnly={!isEditing}
       />
       <textarea
         ref={textareaRef}
-        className="text-lg p-2 h-auto resize-none overflow-hidden dark:bg-gray-800 dark:text-white focus:outline-none"
+        className="text-lg p-2 h-auto resize-none overflow-hidden bg-white dark:bg-gray-800 dark:text-white focus:outline-none"
         style={{ whiteSpace: "pre-wrap" }}
         value={displayContent}
         onChange={(event) => setDisplayContent(event.target.value)}

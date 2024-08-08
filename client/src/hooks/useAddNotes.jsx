@@ -1,14 +1,16 @@
 import { getNotesAPI } from "../utils/constant";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import useStore from "../zustand/useStore";
-import { encryptNote} from "../utils/encryptAndDecrypt";
-import { AuthContext } from "../context/authContext"; 
+import { encryptNote } from "../utils/encryptAndDecrypt";
+import { AuthContext } from "../context/authContext";
 
 function useAddNotes() {
-  const { notes, setNotes } = useStore()
+  const { notes, setNotes } = useStore();
   const { user } = useContext(AuthContext);
-  
+  const [addLoading, setAddLoading] = useState(false);
+
   const addNotes = async (title, description) => {
+    setAddLoading(true);
     const encryptedTitle = encryptNote(user?.googleId, title);
     const encryptedDescription = encryptNote(user?.googleId, description);
 
@@ -19,20 +21,25 @@ function useAddNotes() {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ title:encryptedTitle, description:encryptedDescription }),
+        body: JSON.stringify({
+          title: encryptedTitle,
+          description: encryptedDescription,
+        }),
       });
       if (!response.ok) {
         throw new Error("Server Error");
       }
-      const rawdata = await fetch(getNotesAPI,{credentials:"include"});
+      const rawdata = await fetch(getNotesAPI, { credentials: "include" });
       const data = await rawdata.json();
       setNotes(data);
       console.log(await response.json());
     } catch (err) {
       console.log(err);
+    } finally {
+      setAddLoading(false);
     }
-    };
-    return addNotes;
+  };
+  return { addNotes, addLoading };
 }
 
 export default useAddNotes;
