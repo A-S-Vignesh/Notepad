@@ -5,8 +5,10 @@ import { changeNoteAPI, getNotesAPI } from "../utils/constant";
 
 const useDeleteNotes = () => {
   const { setNotes } = useStore();
+  const [deleteLoading, setDeleteLoading] = useState(false);
   const deleteNotes = async (id) => {
     try {
+      setDeleteLoading(true)
       const response = await fetch(changeNoteAPI(id), {
         method: "DELETE",
         credentials: "include",
@@ -22,8 +24,11 @@ const useDeleteNotes = () => {
     } catch (error) {
       console.log(error);
     }
+    finally {
+      setDeleteLoading(false)
+    }
   };
-  return deleteNotes;
+  return { deleteNotes, deleteLoading };
 };
 
 export default useDeleteNotes;
