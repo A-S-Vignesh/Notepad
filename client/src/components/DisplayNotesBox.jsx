@@ -35,7 +35,7 @@ function DisplayNotesBox({ id, title, content }) {
         style={{ whiteSpace: "pre-wrap" }}
         value={displayContent}
         onChange={(event) => setDisplayContent(event.target.value)}
-        // onInput={adjustTextareaHeight}
+        onInput={adjustTextareaHeight}
         readOnly={!isEditing}
       ></textarea>
       <div className="flex justify-between mt-2">
