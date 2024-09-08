@@ -1,5 +1,6 @@
 import React from "react";
 import "./css/index.css";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Header from "./components/Header";
 import Notes from "./components/Notes";
 import useFetchNotes from "./hooks/useFetchNotes";
@@ -14,6 +15,7 @@ const App = () => {
       <Notes />
       <ScrollToTopButton />
       <Footer />
+      <SpeedInsights />
     </div>
   );
 };
